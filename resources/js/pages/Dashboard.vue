@@ -35,6 +35,8 @@ export default {
         .post("/api/logout")
         .then((response) => this.$router.push({ name: "Home" }))
         .catch((error) => console.log(error));
+        localStorage.removeItem("authenticated");
+        this.$emit("updateSidebar");
     },
   },
 };
