@@ -23,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
+Route::middleware('auth:sanctum')->get('categories/{categoria}', [CategoriaController::class, 'show']);
+Route::middleware('auth:sanctum')->put('categories/{categoria}', [CategoriaController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('categories/{categoria}', [CategoriaController::class, 'destroy']);
 //////////////////////////////////////////////// PUBLIC ROUTES ////////////////////////////////////////////////
 Route::post('register', [RegisteredUserController::class, 'store']);
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
@@ -30,3 +33,5 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 // categories
 Route::middleware('auth:sanctum')->post('categories/create', [CategoriaController::class, 'store']);
 
+//categories
+Route::get('categories',[CategoriaController::class,'index']);
